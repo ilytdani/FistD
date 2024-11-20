@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
+import { PaginaDistanciaComponent } from './pagina-distancia/pagina-distancia.component';
+import { PaginaTiempoComponent } from './pagina-tiempo/pagina-tiempo.component';
+import { PaginaVelocidadComponent } from './pagina-velocidad/pagina-velocidad.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: PaginaPrincipalComponent },
+  { path: 'principal', component: PaginaPrincipalComponent},
+  { path: 'distancia', component: PaginaDistanciaComponent },
+  { path: 'tiempo', component: PaginaTiempoComponent },
+  { path: 'velocidad', component: PaginaVelocidadComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '**', redirectTo: '' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
