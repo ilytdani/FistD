@@ -17,19 +17,42 @@
 
     <!-- Sección principal -->
     <div class="d-flex flex-column justify-content-center align-items-center h-100">
-      <div class="d-flex gap-3 align-items-start">
-        <div
-          class="rounded-custom"
-          style="width: 250px; height: 150px; background-color: #C4D1E1;">
-        </div>
-        <div
-          class="rounded-custom align-self-end"
-          style="width: 250px; height: 150px; background-color: #9CADC1; margin-top: 30px;">
-        </div>
-        <div
-          class="rounded-custom"
-          style="width: 250px; height: 150px; background-color: #C4D1E1;">
-        </div>
+      <div class="d-flex gap-4 align-items-start">
+        <!-- Card 1 -->
+        <a 
+          routerLink="/pagina-distancia" 
+          class="card-link"
+        >
+          <div class="card custom-card">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="text-center">Distancia</h5>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 (del medio) -->
+        <a 
+          routerLink="/pagina-velocidad" 
+          class="card-link"
+        >
+          <div class="card custom-card middle-card">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="text-center">Velocidad</h5>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a 
+          routerLink="/pagina-tiempo" 
+          class="card-link"
+        >
+          <div class="card custom-card">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="text-center">Tiempo</h5>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
