@@ -13,7 +13,11 @@ const routes: Routes = [
   { path: 'tiempo', component: PaginaTiempoComponent },
   { path: 'velocidad', component: PaginaVelocidadComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '**', redirectTo: '' }
+  { path: 'pagina-distancia', component: PaginaDistanciaComponent },
+  { path: 'pagina-velocidad', component: PaginaVelocidadComponent },
+  { path: 'pagina-tiempo', component: PaginaTiempoComponent },
+  { path: '', redirectTo: '/pagina-distancia', pathMatch: 'full' }, // Ruta por defecto
+  { path: '**', redirectTo: '/pagina-distancia' } // Ruta 404
 ];
 
 @NgModule({

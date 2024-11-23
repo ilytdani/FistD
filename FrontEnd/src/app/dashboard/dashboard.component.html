@@ -1,1 +1,74 @@
-<p>dashboard works!</p>
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-dark">
+  <div class="card custom-border mx-auto bg-light">
+    <!-- Decoración superior -->
+    <div class="position-absolute top-0 start-0 w-100">
+      <div class="row m-3">
+        <div class="col text-start text-muted">
+          <i class="bi bi-gear"></i>
+        </div>
+        <div class="col text-center text-muted">
+          <i class="bi bi-atom"></i>
+        </div>
+        <div class="col text-end text-muted">
+          <i class="bi bi-graph-up"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección principal -->
+    <div class="d-flex flex-column justify-content-center align-items-center h-100">
+      <div class="d-flex gap-4 align-items-start">
+        <!-- Card 1 -->
+        <a 
+          routerLink="/pagina-distancia" 
+          class="card-link"
+        >
+          <div class="card custom-card">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="text-center">Distancia</h5>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 (del medio) -->
+        <a 
+          routerLink="/pagina-velocidad" 
+          class="card-link"
+        >
+          <div class="card custom-card middle-card">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="text-center">Velocidad</h5>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a 
+          routerLink="/pagina-tiempo" 
+          class="card-link"
+        >
+          <div class="card custom-card">
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <h5 class="text-center">Tiempo</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Decoración inferior -->
+    <div class="position-absolute bottom-0 start-0 w-100">
+      <div class="row m-3">
+        <div class="col text-start text-muted">
+          <i class="bi bi-lightbulb"></i>
+        </div>
+        <div class="col text-center text-muted">
+          <i class="bi bi-flask"></i>
+        </div>
+        <div class="col text-end text-muted">
+          <i class="bi bi-molecule"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
