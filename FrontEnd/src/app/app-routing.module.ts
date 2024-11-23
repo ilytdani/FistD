@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'tiempo', component: PaginaTiempoComponent },
   { path: 'velocidad', component: PaginaVelocidadComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'pagina-principal', component: PaginaPrincipalComponent },
   { path: 'pagina-distancia', component: PaginaDistanciaComponent },
   { path: 'pagina-velocidad', component: PaginaVelocidadComponent },
   { path: 'pagina-tiempo', component: PaginaTiempoComponent },
