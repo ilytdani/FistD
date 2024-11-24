@@ -1,0 +1,130 @@
+/* Estilos existentes */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .main-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    width: 90%; /* Ancho casi completo */
+    height: 90%; /* Alto casi completo */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: relative; /* Importante para posicionar el botón Regresar */
+    animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
+  }
+  
+  .left-half, .right-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .left-half {
+    border-right: 2px solid #ecf0f1;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  textarea {
+    width: 80%;
+    height: 90%; /* Ajustamos la altura para que sea más largo */
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    resize: none;
+  }
+  
+  textarea[readonly] {
+    background-color: #ecf0f1;
+  }
+  
+  .blue-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .blue-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Estilos para el botón Regresar */
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #1a252f;
+  }
+  
+  /* Animación de aparición y crecimiento */
+  @keyframes fadeInGrow {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
