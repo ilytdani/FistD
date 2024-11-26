@@ -31,7 +31,7 @@ body {
     animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
   }
   
-  .left-half, .right-half {
+  .left-half, .right-half {/* Dividimos la pantalla en dos partes */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -44,19 +44,19 @@ body {
     border-right: 2px solid #ecf0f1;
   }
   
-  h2 {
+  h2 {/* Estilo para el título */
     font-size: 2rem;
     color: #2c3e50;
     margin-bottom: 20px;
   }
   
-  label {
+  label {/* Estilo para los textos */
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: #2c3e50;
   }
   
-  input {
+  input {/* Estilo para los inputs */
     width: 80%;
     padding: 10px;
     margin-bottom: 20px;

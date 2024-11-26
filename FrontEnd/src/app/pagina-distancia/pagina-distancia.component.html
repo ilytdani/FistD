@@ -15,18 +15,23 @@
       <!-- Parte izquierda -->
       <div class="left-half">
         <h2>Distancia</h2>
+        
+        <!-- Campo de Tiempo -->
         <label for="time">Tiempo:</label>
-        <input type="text" id="time" placeholder="Ingresa el tiempo">
+        <input type="text" id="time" [(ngModel)]="time" placeholder="Ingresa el tiempo">
         
+        <!-- Campo de Velocidad -->
         <label for="speed">Velocidad:</label>
-        <input type="text" id="speed" placeholder="Ingresa la velocidad">
+        <input type="text" id="speed" [(ngModel)]="speed" placeholder="Ingresa la velocidad">
         
-        <button id="calculate-btn" class="blue-button">Calcular</button>
+        <!-- Botón para calcular -->
+        <button (click)="calculateDistance()" class="blue-button">Calcular</button>
       </div>
 
       <!-- Parte derecha -->
       <div class="right-half">
-        <textarea id="output-box" readonly placeholder="Resultado aquí..."></textarea>
+        <!-- Cuadro de texto para resultados -->
+        <textarea id="output-box" [class.animate-result]="animateResult" readonly>{{ result }}</textarea>
       </div>
     </div>
   </div>
