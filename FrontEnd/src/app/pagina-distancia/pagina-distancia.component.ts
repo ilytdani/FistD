@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-distancia',
@@ -8,50 +7,128 @@ import { Router } from '@angular/router';
 })
 export class PaginaDistanciaComponent {
   // Variables de entrada
-  time: string = ''; // Tiempo en segundos
-  speed: string = ''; // Velocidad en m/s
-  result: string = ''; // Resultado de la distancia calculada
-  animateResult: boolean = false; // Controla la animación del resultado
+  time: number | null = null;
+  speed: number | null = null;
+  distance: number | null = null;
 
-  constructor(private router: Router) {}
+  // Selecciones del usuario
+  calculationType: string = 'distance'; // Tipo de cálculo
+  timeUnit: string = 'seconds'; // Unidad de tiempo
+  speedUnit: string = 'm/s'; // Unidad de velocidad
+  distanceUnit: string = 'meters'; // Unidad de distancia
 
-  // Método para calcular la distancia
-  calculateDistance(): void {
-    const timeValue = parseFloat(this.time); // Convertir tiempo a número
-    const speedValue = parseFloat(this.speed); // Convertir velocidad a número
+  // Resultado y animación
+  result: string = '';
+  animateResult: boolean = false;
 
-    // Validación de valores ingresados
-    if (isNaN(timeValue) || isNaN(speedValue) || timeValue <= 0 || speedValue <= 0) {
-      this.result = 'Por favor, ingresa valores válidos (positivos).';
-      this.triggerAnimation(); // Reiniciar la animación para mostrar el mensaje
-      return;
+  // Realizar cálculo basado en selección
+  performCalculation(): void {
+    this.animateResult = false;
+    let output = '';
+
+    // Conversión de unidades
+    const timeInSeconds = this.convertTimeToSeconds(this.time, this.timeUnit);
+    const speedInMetersPerSecond = this.convertSpeedToMetersPerSecond(this.speed, this.speedUnit);
+    const distanceInMeters = this.convertDistanceToMeters(this.distance, this.distanceUnit);
+
+    // Lógica del cálculo
+    switch (this.calculationType) {
+      case 'distance':
+        if (timeInSeconds !== null && speedInMetersPerSecond !== null) {
+          const calculatedDistance = timeInSeconds * speedInMetersPerSecond;
+          output = `La distancia es ${this.convertMetersToDistanceUnit(calculatedDistance, this.distanceUnit).toFixed(2)} ${this.distanceUnit}.\n`;
+          output += `Se calculó multiplicando el tiempo (${timeInSeconds}s) por la velocidad (${speedInMetersPerSecond}m/s).`;
+        } else {
+          output = 'Por favor, ingresa tiempo y velocidad.';
+        }
+        break;
+
+      case 'speed':
+        if (timeInSeconds !== null && distanceInMeters !== null) {
+          const calculatedSpeed = distanceInMeters / timeInSeconds;
+          output = `La velocidad es ${this.convertMetersPerSecondToSpeedUnit(calculatedSpeed, this.speedUnit).toFixed(2)} ${this.speedUnit}.\n`;
+          output += `Se calculó dividiendo la distancia (${distanceInMeters}m) por el tiempo (${timeInSeconds}s).`;
+        } else {
+          output = 'Por favor, ingresa distancia y tiempo.';
+        }
+        break;
+
+      case 'time':
+        if (speedInMetersPerSecond !== null && distanceInMeters !== null) {
+          const calculatedTime = distanceInMeters / speedInMetersPerSecond;
+          output = `El tiempo es ${this.convertSecondsToTimeUnit(calculatedTime, this.timeUnit).toFixed(2)} ${this.timeUnit}.\n`;
+          output += `Se calculó dividiendo la distancia (${distanceInMeters}m) por la velocidad (${speedInMetersPerSecond}m/s).`;
+        } else {
+          output = 'Por favor, ingresa distancia y velocidad.';
+        }
+        break;
+
+      default:
+        output = 'Selecciona un tipo de cálculo.';
     }
 
-    // Cálculo de la distancia
-    const distance = timeValue * speedValue;
-
-    // Generar explicación detallada del cálculo
-    this.result = `
-      Distancia calculada: ${distance.toFixed(2)} metros.
-      Fórmula: distancia = velocidad × tiempo.
-      Valores usados:
-      - Tiempo: ${timeValue.toFixed(2)} segundos.
-      - Velocidad: ${speedValue.toFixed(2)} metros/segundo.
-    `.trim();
-
-    this.triggerAnimation(); // Disparar la animación
+    this.result = output;
+    this.animateResult = true; // Activar animación
   }
 
-  // Método para reiniciar y disparar la animación del resultado
-  triggerAnimation(): void {
-    this.animateResult = false; // Reiniciar el estado de la animación
-    setTimeout(() => {
-      this.animateResult = true; // Aplicar la animación
-    }, 0); // Asegurar el reflujo
+  // Conversión de tiempo a segundos
+  private convertTimeToSeconds(time: number | null, unit: string): number | null {
+    if (time === null) return null;
+    switch (unit) {
+      case 'seconds': return time;
+      case 'minutes': return time * 60;
+      case 'hours': return time * 3600;
+      default: return null;
+    }
   }
 
-  // Método para regresar al dashboard
-  goToDashboard(): void {
-    this.router.navigate(['/dashboard']); // Navegar al dashboard
+  // Conversión de velocidad a metros por segundo
+  private convertSpeedToMetersPerSecond(speed: number | null, unit: string): number | null {
+    if (speed === null) return null;
+    switch (unit) {
+      case 'm/s': return speed;
+      case 'km/h': return speed / 3.6;
+      case 'mi/h': return speed * 0.44704;
+      default: return null;
+    }
+  }
+
+  // Conversión de distancia a metros
+  private convertDistanceToMeters(distance: number | null, unit: string): number | null {
+    if (distance === null) return null;
+    switch (unit) {
+      case 'meters': return distance;
+      case 'kilometers': return distance * 1000;
+      case 'miles': return distance * 1609.34;
+      default: return null;
+    }
+  }
+
+  // Conversiones inversas para mostrar resultados
+  private convertMetersToDistanceUnit(meters: number, unit: string): number {
+    switch (unit) {
+      case 'meters': return meters;
+      case 'kilometers': return meters / 1000;
+      case 'miles': return meters / 1609.34;
+      default: return meters;
+    }
+  }
+
+  private convertSecondsToTimeUnit(seconds: number, unit: string): number {
+    switch (unit) {
+      case 'seconds': return seconds;
+      case 'minutes': return seconds / 60;
+      case 'hours': return seconds / 3600;
+      default: return seconds;
+    }
+  }
+
+  private convertMetersPerSecondToSpeedUnit(speed: number, unit: string): number {
+    switch (unit) {
+      case 'm/s': return speed;
+      case 'km/h': return speed * 3.6;
+      case 'mi/h': return speed / 0.44704;
+      default: return speed;
+    }
   }
 }
