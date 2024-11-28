@@ -1,22 +1,3 @@
 <div class="container">
-  <h1>Calculadora de Velocidad</h1>
-  <p>Ingresa los valores de distancia (en metros) y tiempo (en segundos) para calcular la velocidad:</p>
-  
-  <!-- Formulario para capturar distancia y tiempo -->
-  <form (submit)="calcularVelocidad($event)">
-    <label for="distancia">Distancia (m):</label>
-    <input type="number" id="distancia" [(ngModel)]="distancia" name="distancia" required />
 
-    <label for="tiempo">Tiempo (s):</label>
-    <input type="number" id="tiempo" [(ngModel)]="tiempo" name="tiempo" required />
-
-    <button type="submit">Calcular Velocidad</button>
-  </form>
-
-  <!-- Mostrar resultado y explicación solo si hay un resultado calculado -->
-  <div *ngIf="resultado !== null">
-    <h2>Resultado:</h2>
-    <p><strong>Velocidad:</strong> {{ resultado }} m/s</p>
-    <p><strong>Explicación:</strong> {{ explicacion }}</p>
-  </div>
 </div>
