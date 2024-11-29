@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./pagina-distancia.component.css']
 })
 export class PaginaDistanciaComponent {
+
+  ngOnInit() {
+    const container = document.querySelector('.container');
+    if (container) {
+      container.classList.add('ascending'); // Aplica la clase de animación
+    }
+  }
   // Variables de entrada
   time: number | null = null;
   speed: number | null = null;

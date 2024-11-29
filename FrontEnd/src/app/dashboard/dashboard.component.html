@@ -30,16 +30,16 @@
     <div class="d-flex flex-column justify-content-center align-items-center h-100">
       <div class="d-flex gap-4 align-items-start">
         <!-- Card 1 -->
-        <a routerLink="/pagina-distancia" class="card-link">
+        <a (click)="descendAndNavigate('/pagina-distancia')" class="card-link">
           <div class="card custom-card animation-expand">
             <div class="card-body d-flex justify-content-center align-items-center">
-              <h5 class="text-center">MRU <br>(Movimiento Rectilineo Uniforme)</h5>
+              <h5 class="text-center">MRU <br>(Movimiento Rectilíneo Uniforme)</h5>
             </div>
           </div>
         </a>
 
         <!-- Card 2 (del medio) -->
-        <a routerLink="/pagina-velocidad" class="card-link">
+        <a (click)="descendAndNavigate('/pagina-velocidad')" class="card-link">
           <div class="card custom-card middle-card animation-expand">
             <div class="card-body d-flex justify-content-center align-items-center">
               <h5 class="text-center">Soon...</h5>
@@ -48,7 +48,7 @@
         </a>
 
         <!-- Card 3 -->
-        <a routerLink="/pagina-tiempo" class="card-link">
+        <a (click)="descendAndNavigate('/pagina-tiempo')" class="card-link">
           <div class="card custom-card animation-expand">
             <div class="card-body d-flex justify-content-center align-items-center">
               <h5 class="text-center">Soon...</h5>

@@ -1,3 +1,27 @@
+@keyframes elevate {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes descend {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(50px);
+    opacity: 0.8;
+  }
+}
+
+.card.descending {
+  animation: descend 0.5s ease-out forwards;
+}
 /* styles.css */
 body {
   margin: 0;
@@ -26,7 +50,7 @@ body {
   max-width: 600px;
   text-align: center;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease-in-out;
+  animation: elevate 1s ease-out; /* Aplica la nueva animación */
 }
 
 .title {
@@ -34,7 +58,6 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   color: #2b2b2b;
-  animation: slideDown 1s ease-in-out;
 }
 
 .description {

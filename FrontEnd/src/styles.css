@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+/* Establecer el color base del fondo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F8F9FA; /* Color base de fondo */
+    color: #212529; /* Color de texto predeterminado (opcional) */
+    overflow-x: hidden; /* Evitar scroll horizontal inesperado */
+  }
+  
+  /* General settings para el contenedor principal */
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
+  

@@ -1,3 +1,21 @@
+/* Animación de ascenso */
+@keyframes ascend {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Clase para aplicar la animación de ascenso */
+.ascending {
+  animation: ascend 0.5s ease-in-out;
+}
+
+
 /* Estilos existentes */
 body {
     margin: 0;
