@@ -36,8 +36,10 @@ export class PaginaDistanciaComponent {
       case 'distance':
         if (timeInSeconds !== null && speedInMetersPerSecond !== null) {
           const calculatedDistance = timeInSeconds * speedInMetersPerSecond;
-          output = `La distancia es ${this.convertMetersToDistanceUnit(calculatedDistance, this.distanceUnit).toFixed(2)} ${this.distanceUnit}.\n`;
-          output += `Se calculó multiplicando el tiempo (${timeInSeconds}s) por la velocidad (${speedInMetersPerSecond}m/s).`;
+          output = `La distancia es de ${this.convertMetersToDistanceUnit(calculatedDistance, this.distanceUnit).toFixed(2)} ${this.distanceUnit}.\n`;
+          output += `Para calcular la distancia se deben tener 2 datos el tiempo y la velocidad, se debe multiplicar el tiempo(${timeInSeconds}s) por la velocidad (${speedInMetersPerSecond}m/s) para obtener la distancia que se ah recorrido.
+Para facilitar un poco el proceso también puedes hacer la conversión de unidades de medida. Por ejemplo:
+De minutos u horas a segundos y de kilómetros/hora o Millas/hora a Metros/segundo.`;
         } else {
           output = 'Por favor, ingresa tiempo y velocidad.';
         }
@@ -47,7 +49,10 @@ export class PaginaDistanciaComponent {
         if (timeInSeconds !== null && distanceInMeters !== null) {
           const calculatedSpeed = distanceInMeters / timeInSeconds;
           output = `La velocidad es ${this.convertMetersPerSecondToSpeedUnit(calculatedSpeed, this.speedUnit).toFixed(2)} ${this.speedUnit}.\n`;
-          output += `Se calculó dividiendo la distancia (${distanceInMeters}m) por el tiempo (${timeInSeconds}s).`;
+          output += `Para calcular la velocidad se deben tener 2 datos el tiempo y la distancia.
+Para obtener la velocidad se debe dividir la distancia(${distanceInMeters}m) entre el tiempo(${timeInSeconds}s) para obtener la velocidad que se ha recorrido.
+Para facilitar un poco el proceso también puedes hacer la conversión de unidades de medida. Por ejemplo:
+ De minutos u horas a segundos y de kilómetros o Millas a Metros.`;
         } else {
           output = 'Por favor, ingresa distancia y tiempo.';
         }
@@ -57,7 +62,10 @@ export class PaginaDistanciaComponent {
         if (speedInMetersPerSecond !== null && distanceInMeters !== null) {
           const calculatedTime = distanceInMeters / speedInMetersPerSecond;
           output = `El tiempo es ${this.convertSecondsToTimeUnit(calculatedTime, this.timeUnit).toFixed(2)} ${this.timeUnit}.\n`;
-          output += `Se calculó dividiendo la distancia (${distanceInMeters}m) por la velocidad (${speedInMetersPerSecond}m/s).`;
+          output += `Para calcular el tiempo se deben tener 2 datos la distancia y la velocidad.
+Para obtener el tiempo se debe dividir la distancia(${distanceInMeters}m) entre la velocidad(${speedInMetersPerSecond}m/s) para obtener el tiempo que se ha recorrido.
+Para facilitar un poco el proceso también puedes hacer la conversión de unidades de medida. Por ejemplo:
+ De kilómetros o Millas a Metros y de kilómetros/hora o Millas/hora a Metros/segundo.`;
         } else {
           output = 'Por favor, ingresa distancia y velocidad.';
         }

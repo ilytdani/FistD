@@ -24,8 +24,8 @@ body {
     border-radius: 15px;
     padding: 20px;
     display: flex;
-    width: 90%; /* Ancho casi completo */
-    height: 90%; /* Alto casi completo */
+    width: 150%; /* Ancho casi completo */
+    height: 99%; /* Alto casi completo */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     position: relative; /* Importante para posicionar el botón Regresar */
     animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
@@ -89,7 +89,7 @@ body {
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 5px;
     transition: background-color 0.3s ease;
   }
   
