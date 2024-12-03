@@ -24,7 +24,7 @@ body {
     border-radius: 15px;
     padding: 20px;
     display: flex;
-    width: 90%; /* Ancho casi completo */
+    width: 150%; /* Ancho casi completo */
     height: 90%; /* Alto casi completo */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     position: relative; /* Importante para posicionar el botón Regresar */
@@ -127,4 +127,36 @@ body {
       transform: scale(1);
     }
   }
-  
+  /* Estilos para los combobox */
+select {
+  width: 30%; /* Ajuste de ancho */
+  padding: 5px; /* Espaciado interno */
+  margin-top: 0px; /* Separación superior */
+  margin-bottom: 5px; /* Separación inferior */
+  border: 1px solid #bdc3c7; /* Borde gris */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de texto */
+  background-color: #f9f9f9; /* Fondo claro */
+  color: #2c3e50; /* Texto oscuro */
+  cursor: pointer; /* Manito al pasar el mouse */
+  transition: all 0.3s ease; /* Transición para hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Hover en combobox */
+select:hover {
+  background-color: #ecf0f1; /* Fondo ligeramente más claro */
+  border-color: #9cadc1; /* Cambio de color de borde */
+}
+
+/* Enfoque en combobox */
+select:focus {
+  outline: none; /* Elimina el borde azul predeterminado */
+  border-color: #2980b9; /* Borde azul */
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
+}
+
+/* Estilo para opciones dentro del combobox */
+select option {
+  padding: 10px; /* Espaciado interno */
+}

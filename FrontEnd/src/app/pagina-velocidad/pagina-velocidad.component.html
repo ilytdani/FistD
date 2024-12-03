@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Distancia</title>
+  <title>MRUA</title>
   <link rel="stylesheet" href="pagina-velocidad.component.css">
 </head>
 <body>
@@ -11,22 +11,80 @@
     <div class="main-card">
       <!-- Botón Regresar -->
       <button routerLink="/dashboard" class="back-button">Regresar</button>
-      
+
       <!-- Parte izquierda -->
       <div class="left-half">
-        <h2>Velocidad</h2>
-        <label for="time">Tiempo:</label>
-        <input type="text" id="time" placeholder="Ingresa el tiempo">
-        
-        <label for="speed">Distancia:</label>
-        <input type="text" id="Distancia" placeholder="Ingresa la distancia">
-        
-        <button id="calculate-btn" class="blue-button">Calcular</button>
+        <h2>MRUA</h2>
+
+        <!-- Selección de tipo de cálculo -->
+        <label for="calculation-type">Selecciona el cálculo:</label>
+        <select id="calculation-type" [(ngModel)]="calculationType">
+          <option value="finalVelocity">Velocidad Final</option>
+          <option value="distance">Distancia</option>
+          <option value="acceleration">Aceleración</option>
+          <option value="time">Tiempo</option>
+          <option value="initialVelocity">Velocidad Inicial</option>
+          <option value="finalVelocityByDistance">Velocidad Final (Por Distancia)</option>
+        </select>
+
+        <!-- Campos de entrada dinámicos -->
+        <div *ngIf="calculationType === 'finalVelocity' || calculationType === 'distance' || calculationType === 'acceleration' || calculationType === 'time' || calculationType === 'initialVelocity'">
+          <label for="initialVelocity">Velocidad Inicial:</label>
+          <input type="number" id="initialVelocity" [(ngModel)]="initialVelocity" placeholder="Ingresa la velocidad inicial">
+          <select [(ngModel)]="initialVelocityUnit">
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mi/h">mi/h</option>
+          </select>
+        </div>
+
+        <div *ngIf="calculationType !== 'finalVelocityByDistance'">
+          <label for="time">Tiempo:</label>
+          <input type="number" id="time" [(ngModel)]="time" placeholder="Ingresa el tiempo">
+          <select [(ngModel)]="timeUnit">
+            <option value="seconds">Segundos</option>
+            <option value="minutes">Minutos</option>
+            <option value="hours">Horas</option>
+          </select>
+        </div>
+
+        <div *ngIf="calculationType === 'finalVelocity' || calculationType === 'distance' || calculationType === 'finalVelocityByDistance'">
+          <label for="acceleration">Aceleración:</label>
+          <input type="number" id="acceleration" [(ngModel)]="acceleration" placeholder="Ingresa la aceleración">
+          <select [(ngModel)]="accelerationUnit">
+            <option value="m/s²">m/s²</option>
+          </select>
+        </div>
+
+        <div *ngIf="calculationType === 'distance' || calculationType === 'finalVelocityByDistance' || calculationType === 'initialVelocity'">
+          <label for="distance">Distancia:</label>
+          <input type="number" id="distance" [(ngModel)]="distance" placeholder="Ingresa la distancia">
+          <select [(ngModel)]="distanceUnit">
+            <option value="meters">Metros</option>
+            <option value="kilometers">Kilómetros</option>
+            <option value="miles">Millas</option>
+          </select>
+        </div>
+
+        <!-- Campo de velocidad final (oculto si el cálculo es "Velocidad Final") -->
+        <div *ngIf="calculationType !== 'finalVelocity'">
+          <label for="finalVelocity">Velocidad Final:</label>
+          <input type="number" id="finalVelocity" [(ngModel)]="finalVelocity" placeholder="Ingresa la velocidad final">
+          <select [(ngModel)]="finalVelocityUnit">
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mi/h">mi/h</option>
+          </select>
+        </div>
+
+        <!-- Botón para calcular -->
+        <button (click)="performCalculation()" class="blue-button">Calcular</button>
       </div>
 
       <!-- Parte derecha -->
       <div class="right-half">
-        <textarea id="output-box" readonly placeholder="Resultado aquí..."></textarea>
+        <!-- Resultado -->
+        <textarea id="output-box" [class.animate-result]="animateResult" readonly>{{ result }}</textarea>
       </div>
     </div>
   </div>
