@@ -1,140 +1,157 @@
-/* Estilos existentes */
+/* General styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #34495e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .main-card {
-    background-color: white;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    width: 150%; /* Ancho casi completo */
-    height: 90%; /* Alto casi completo */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    position: relative; /* Importante para posicionar el botón Regresar */
-    animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
-  }
-  
-  .left-half, .right-half {/* Dividimos la pantalla en dos partes */
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .left-half {
-    border-right: 2px solid #ecf0f1;
-  }
-  
-  h2 {/* Estilo para el título */
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-  }
-  
-  label {/* Estilo para los textos */
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #2c3e50;
-  }
-  
-  input {/* Estilo para los inputs */
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  textarea {
-    width: 80%;
-    height: 90%; /* Ajustamos la altura para que sea más largo */
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #ecf0f1;
-    color: #2c3e50;
-    resize: none;
-  }
-  
-  textarea[readonly] {
-    background-color: #ecf0f1;
-  }
-  
-  .blue-button {
-    background-color: #9cadc1;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .blue-button:hover {
-    background-color: #2980b9;
-  }
-  
-  /* Estilos para el botón Regresar */
-  .back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #2c3e50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-button:hover {
-    background-color: #1a252f;
-  }
-  
-  /* Animación de aparición y crecimiento */
-  @keyframes fadeInGrow {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  /* Estilos para los combobox */
-select {
-  width: 30%; /* Ajuste de ancho */
-  padding: 5px; /* Espaciado interno */
-  margin-top: 0px; /* Separación superior */
-  margin-bottom: 5px; /* Separación inferior */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #34495e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+/* Contenedor centrado para selección de cálculo */
+.selection-container {
+  display: flex;
+  flex-direction: column; /* Alineación vertical */
+  justify-content: center;
+  align-items: center; /* Centrado horizontal */
+  margin-bottom: 30px; /* Espaciado inferior */
+  padding: 20px; /* Espaciado interno */
+  border: 1px solid #bdc3c7; /* Borde gris claro */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  background-color: #f9f9f9; /* Fondo claro */
+  width: 90%; /* Ajusta el tamaño del contenedor */
+}
+
+/* Estilo del combobox dentro del contenedor */
+.selection-container select {
+  width: 50%; /* Más pequeño para estética */
+  padding: 10px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño del texto */
   border: 1px solid #bdc3c7; /* Borde gris */
-  border-radius: 5px; /* Bordes redondeados */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  background-color: white; /* Fondo blanco */
+  color: #2c3e50; /* Texto oscuro */
+}
+
+/* Hover para combobox */
+.selection-container select:hover {
+  border-color: #9cadc1; /* Cambia el color del borde */
+  background-color: #ecf0f1; /* Fondo ligeramente más claro */
+}
+
+/* Enfoque en combobox */
+.selection-container select:focus {
+  outline: none; /* Quita el borde predeterminado */
+  border-color: #2980b9; /* Borde azul */
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
+}
+
+/* Estilo para el texto dentro del contenedor */
+.selection-container label {
+  font-size: 1.2rem; /* Tamaño del texto */
+  color: #2c3e50; /* Color del texto */
+  margin-bottom: 10px; /* Espaciado con el combobox */
+  text-align: center; /* Centrado */
+}
+
+
+
+
+
+.main-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  width: 150%; /* Ancho casi completo */
+  height: 90%; /* Alto casi completo */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative; /* Importante para posicionar el botón Regresar */
+  animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
+}
+
+.left-half,
+.right-half {
+  /* Dividimos la pantalla en dos partes */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-half {
+  border-right: 2px solid #ecf0f1;
+}
+
+h2 {
+  /* Estilo para el título */
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+label {
+  /* Estilo para los textos */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+/* Input group: contenedor de textbox + combobox */
+.input-group {
+  display: flex;
+  align-items: center; /* Alinea combobox y textbox horizontalmente */
+  margin-bottom: 20px; /* Espacio inferior entre grupos */
+  width: 100%; /* Asegura que los elementos internos se ajusten */
+}
+
+/* Textbox (input) */
+.input-group input {
+  width: 70%; /* Tamaño más pequeño para dejar espacio al combobox */
+  padding: 10px; /* Espaciado interno */
+  font-size: 1rem; /* Texto consistente */
+  border: 1px solid #bdc3c7; /* Borde gris */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  margin-right: 10px; /* Espacio entre textbox y combobox */
+}
+
+/* Hover para textbox */
+.input-group input:hover {
+  border-color: #9cadc1; /* Cambio de borde al pasar el mouse */
+}
+
+.input-group input:focus {
+  outline: none; /* Quita borde azul predeterminado */
+  border-color: #2980b9; /* Borde azul en foco */
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
+}
+
+/* Combobox (select) */
+.input-group select {
+  width: 25%; /* Más pequeño para quedar al lado del textbox */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #bdc3c7; /* Borde gris */
+  border-radius: 10px; /* Bordes redondeados */
   font-size: 1rem; /* Tamaño de texto */
   background-color: #f9f9f9; /* Fondo claro */
   color: #2c3e50; /* Texto oscuro */
@@ -144,19 +161,86 @@ select {
 }
 
 /* Hover en combobox */
-select:hover {
+.input-group select:hover {
   background-color: #ecf0f1; /* Fondo ligeramente más claro */
   border-color: #9cadc1; /* Cambio de color de borde */
 }
 
-/* Enfoque en combobox */
-select:focus {
+.input-group select:focus {
   outline: none; /* Elimina el borde azul predeterminado */
   border-color: #2980b9; /* Borde azul */
   box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
 }
 
-/* Estilo para opciones dentro del combobox */
-select option {
-  padding: 10px; /* Espaciado interno */
+/* Etiquetas alineadas arriba */
+.input-group label {
+  width: 100%; /* Asegura que la etiqueta ocupe todo el espacio del grupo */
+  font-size: 1rem; /* Tamaño consistente */
+  color: #2c3e50; /* Color oscuro */
+  margin-bottom: 5px; /* Espaciado con el campo */
+  text-align: left; /* Alineación a la izquierda */
+}
+
+/* Botón Calcular */
+.blue-button {
+  background-color: #9cadc1;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.blue-button:hover {
+  background-color: #2980b9;
+}
+
+/* Botón Regresar */
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #1a252f;
+}
+
+/* Animación de aparición y crecimiento */
+@keyframes fadeInGrow {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+textarea {
+  width: 80%;
+  height: 90%; /* Ajustamos la altura para que sea más largo */
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  resize: none;
+}
+
+textarea[readonly] {
+  background-color: #ecf0f1;
 }
