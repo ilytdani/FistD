@@ -17,18 +17,20 @@
         <h2>MRUA</h2>
 
         <!-- Selección de tipo de cálculo -->
-        <label for="calculation-type">Selecciona el cálculo:</label>
-        <select id="calculation-type" [(ngModel)]="calculationType">
-          <option value="finalVelocity">Velocidad Final</option>
-          <option value="distance">Distancia</option>
-          <option value="acceleration">Aceleración</option>
-          <option value="time">Tiempo</option>
-          <option value="initialVelocity">Velocidad Inicial</option>
-          <option value="finalVelocityByDistance">Velocidad Final (Por Distancia)</option>
-        </select>
+        <div class="selection-container">
+          <label for="calculation-type">Selecciona el cálculo:</label>
+          <select id="calculation-type" [(ngModel)]="calculationType">
+            <option value="finalVelocity">Velocidad Final</option>
+            <option value="distance">Distancia</option>
+            <option value="acceleration">Aceleración</option>
+            <option value="time">Tiempo</option>
+            <option value="initialVelocity">Velocidad Inicial</option>
+            <option value="finalVelocityByDistance">Velocidad Final (Por Distancia)</option>
+          </select>
+        </div>
 
-        <!-- Campos de entrada dinámicos -->
-        <div *ngIf="calculationType === 'finalVelocity' || calculationType === 'distance' || calculationType === 'acceleration' || calculationType === 'time' || calculationType === 'initialVelocity'">
+        <!-- Velocidad Inicial -->
+        <div class="input-group" *ngIf="calculationType === 'finalVelocity' || calculationType === 'distance' || calculationType === 'acceleration' || calculationType === 'time' || calculationType === 'finalVelocityByDistance'">
           <label for="initialVelocity">Velocidad Inicial:</label>
           <input type="number" id="initialVelocity" [(ngModel)]="initialVelocity" placeholder="Ingresa la velocidad inicial">
           <select [(ngModel)]="initialVelocityUnit">
@@ -38,7 +40,19 @@
           </select>
         </div>
 
-        <div *ngIf="calculationType !== 'finalVelocityByDistance'">
+        <!-- Velocidad Final -->
+        <div class="input-group" *ngIf="calculationType === 'acceleration' || calculationType === 'time'">
+          <label for="finalVelocity">Velocidad Final:</label>
+          <input type="number" id="finalVelocity" [(ngModel)]="finalVelocity" placeholder="Ingresa la velocidad final">
+          <select [(ngModel)]="finalVelocityUnit">
+            <option value="m/s">m/s</option>
+            <option value="km/h">km/h</option>
+            <option value="mi/h">mi/h</option>
+          </select>
+        </div>
+
+        <!-- Tiempo -->
+        <div class="input-group" *ngIf="calculationType === 'distance' || calculationType === 'acceleration' || calculationType === 'finalVelocity' || calculationType === 'initialVelocity'">
           <label for="time">Tiempo:</label>
           <input type="number" id="time" [(ngModel)]="time" placeholder="Ingresa el tiempo">
           <select [(ngModel)]="timeUnit">
@@ -48,7 +62,8 @@
           </select>
         </div>
 
-        <div *ngIf="calculationType === 'finalVelocity' || calculationType === 'distance' || calculationType === 'finalVelocityByDistance'">
+        <!-- Aceleración -->
+        <div class="input-group" *ngIf="calculationType === 'distance' || calculationType === 'time' || calculationType === 'finalVelocityByDistance' || calculationType === 'finalVelocity' || calculationType === 'initialVelocity'">
           <label for="acceleration">Aceleración:</label>
           <input type="number" id="acceleration" [(ngModel)]="acceleration" placeholder="Ingresa la aceleración">
           <select [(ngModel)]="accelerationUnit">
@@ -56,24 +71,14 @@
           </select>
         </div>
 
-        <div *ngIf="calculationType === 'distance' || calculationType === 'finalVelocityByDistance' || calculationType === 'initialVelocity'">
+        <!-- Distancia -->
+        <div class="input-group" *ngIf="calculationType === 'finalVelocityByDistance'|| calculationType === 'initialVelocity'">
           <label for="distance">Distancia:</label>
           <input type="number" id="distance" [(ngModel)]="distance" placeholder="Ingresa la distancia">
           <select [(ngModel)]="distanceUnit">
             <option value="meters">Metros</option>
             <option value="kilometers">Kilómetros</option>
             <option value="miles">Millas</option>
-          </select>
-        </div>
-
-        <!-- Campo de velocidad final (oculto si el cálculo es "Velocidad Final") -->
-        <div *ngIf="calculationType !== 'finalVelocity'">
-          <label for="finalVelocity">Velocidad Final:</label>
-          <input type="number" id="finalVelocity" [(ngModel)]="finalVelocity" placeholder="Ingresa la velocidad final">
-          <select [(ngModel)]="finalVelocityUnit">
-            <option value="m/s">m/s</option>
-            <option value="km/h">km/h</option>
-            <option value="mi/h">mi/h</option>
           </select>
         </div>
 
