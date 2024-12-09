@@ -7,7 +7,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #002b5c; /* Color azul oscuro relacionado con física */
+  background-color: #34495e; 
   overflow: hidden;
   color: white;
 }
@@ -44,7 +44,7 @@ body {
   color: #3c4d61;
 }
 
-/* Botón estilizado */
+/* Botón */
 .explore-button {
   background-color: #f5a623;
   color: white;
@@ -66,7 +66,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Animaciones para imágenes */
+/* Animaciones imágenes */
 .images-container {
   display: flex;
   justify-content: space-around;
