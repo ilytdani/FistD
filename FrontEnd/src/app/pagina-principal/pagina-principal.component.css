@@ -1,28 +1,4 @@
-@keyframes elevate {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes descend {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(50px);
-    opacity: 0.8;
-  }
-}
-
-.card.descending {
-  animation: descend 0.5s ease-out forwards;
-}
-/* styles.css */
+/* Estilos generales */
 body {
   margin: 0;
   padding: 0;
@@ -31,8 +7,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #3c4d61;
+  background-color: #002b5c; /* Color azul oscuro relacionado con física */
   overflow: hidden;
+  color: white;
 }
 
 .container {
@@ -44,29 +21,30 @@ body {
 }
 
 .card {
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 40px;
-  max-width: 600px;
+  max-width: 800px;
   text-align: center;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  animation: elevate 1s ease-out; /* Aplica la nueva animación */
+  animation: elevate 1s ease-out;
 }
 
 .title {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #2b2b2b;
+  color: #002b5c;
 }
 
 .description {
-  font-size: 1.1rem;
-  color: #4a4a4a;
+  font-size: 1.2rem;
   margin-bottom: 30px;
   line-height: 1.6;
+  color: #3c4d61;
 }
 
+/* Botón estilizado */
 .explore-button {
   background-color: #f5a623;
   color: white;
@@ -88,6 +66,66 @@ body {
   transform: scale(1.05);
 }
 
+/* Animaciones para imágenes */
+.images-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.animated-image {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.animated-image:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+.wave {
+  animation: float 3s ease-in-out infinite;
+}
+
+.atom {
+  animation: spin 4s linear infinite;
+}
+
+.formula {
+  animation: fadeIn 2s ease-out infinite alternate;
+}
+
+.energy {
+  animation: pulse 2s infinite;
+}
+
+.gravity {
+  animation: bounce 3s infinite;
+}
+
+/* Animaciones definidas */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -99,13 +137,20 @@ body {
   }
 }
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
   }
-  to {
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
     transform: translateY(0);
-    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15px);
   }
 }
