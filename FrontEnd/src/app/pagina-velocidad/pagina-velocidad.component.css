@@ -6,90 +6,40 @@ body {
   background-color: #34495e;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  align-items: flex-start; /* Alinea al inicio para permitir scroll */
+  min-height: 100vh; /* Altura mínima de la ventana */
+  overflow-y: auto; /* Habilita desplazamiento vertical */
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  flex-direction: column; /* Asegura que todo se alinee verticalmente */
+  height: auto; /* Ajusta altura para contenido dinámico */
   width: 100%;
+  padding: 20px; /* Espaciado para que no quede pegado a los bordes */
 }
 
-
-
-/* Contenedor centrado para selección de cálculo */
-.selection-container {
-  display: flex;
-  flex-direction: column; /* Alineación vertical */
-  justify-content: center;
-  align-items: center; /* Centrado horizontal */
-  margin-bottom: 30px; /* Espaciado inferior */
-  padding: 20px; /* Espaciado interno */
-  border: 1px solid #bdc3c7; /* Borde gris claro */
-  border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  background-color: #f9f9f9; /* Fondo claro */
-  width: 90%; /* Ajusta el tamaño del contenedor */
-}
-
-/* Estilo del combobox dentro del contenedor */
-.selection-container select {
-  width: 50%; /* Más pequeño para estética */
-  padding: 10px; /* Espaciado interno */
-  font-size: 1rem; /* Tamaño del texto */
-  border: 1px solid #bdc3c7; /* Borde gris */
-  border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-  background-color: white; /* Fondo blanco */
-  color: #2c3e50; /* Texto oscuro */
-}
-
-/* Hover para combobox */
-.selection-container select:hover {
-  border-color: #9cadc1; /* Cambia el color del borde */
-  background-color: #ecf0f1; /* Fondo ligeramente más claro */
-}
-
-/* Enfoque en combobox */
-.selection-container select:focus {
-  outline: none; /* Quita el borde predeterminado */
-  border-color: #2980b9; /* Borde azul */
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
-}
-
-/* Estilo para el texto dentro del contenedor */
-.selection-container label {
-  font-size: 1.2rem; /* Tamaño del texto */
-  color: #2c3e50; /* Color del texto */
-  margin-bottom: 10px; /* Espaciado con el combobox */
-  text-align: center; /* Centrado */
-}
-
-
-
-
-
+/* Contenedor principal de la tarjeta */
 .main-card {
   background-color: white;
   border-radius: 15px;
   padding: 20px;
   display: flex;
-  width: 150%; /* Ancho casi completo */
-  height: 90%; /* Alto casi completo */
+  flex-direction: row; /* Diseño horizontal por defecto */
+  width: 90%; /* Tamaño adaptable al contenedor */
+  max-width: 1200px; /* Ancho máximo */
+  height: auto; /* Ajusta la altura automáticamente */
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  position: relative; /* Importante para posicionar el botón Regresar */
-  animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
+  position: relative; /* Para posicionar elementos dentro */
+  animation: fadeInGrow 0.5s ease-in-out;
 }
 
+/* Estilo para las dos mitades */
 .left-half,
 .right-half {
-  /* Dividimos la pantalla en dos partes */
-  flex: 1;
+  flex: 1; /* Ambas mitades ocupan igual espacio */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,90 +48,147 @@ body {
 }
 
 .left-half {
-  border-right: 2px solid #ecf0f1;
+  border-right: 2px solid #ecf0f1; /* Línea divisoria entre mitades */
 }
 
-h2 {
-  /* Estilo para el título */
-  font-size: 2rem;
+/* Textarea en la mitad derecha */
+.right-half textarea {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 500px; /* Altura adecuada para el resultado */
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #ecf0f1;
   color: #2c3e50;
-  margin-bottom: 20px;
+  resize: none; /* Deshabilita la redimensión */
+  overflow-y: auto; /* Habilita desplazamiento vertical si es necesario */
 }
 
-label {
-  /* Estilo para los textos */
+textarea[readonly] {
+  background-color: #ecf0f1;
+}
+
+/* Animación de aparición */
+@keyframes fadeInGrow {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Contenedor centrado para selección */
+.selection-container {
+  display: flex;
+  flex-direction: column; /* Alineación vertical */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #bdc3c7;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  width: 90%;
+}
+
+/* Combobox dentro de la selección */
+.selection-container select {
+  width: 50%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #2c3e50;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover en combobox */
+.selection-container select:hover {
+  border-color: #9cadc1;
+  background-color: #ecf0f1;
+}
+
+.selection-container select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+}
+
+/* Etiqueta de selección */
+.selection-container label {
   font-size: 1.2rem;
-  margin-bottom: 10px;
   color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-/* Input group: contenedor de textbox + combobox */
+/* Grupo de input y select */
 .input-group {
   display: flex;
-  align-items: center; /* Alinea combobox y textbox horizontalmente */
-  margin-bottom: 20px; /* Espacio inferior entre grupos */
-  width: 100%; /* Asegura que los elementos internos se ajusten */
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
-/* Textbox (input) */
+/* Textbox */
 .input-group input {
-  width: 70%; /* Tamaño más pequeño para dejar espacio al combobox */
-  padding: 10px; /* Espaciado interno */
-  font-size: 1rem; /* Texto consistente */
-  border: 1px solid #bdc3c7; /* Borde gris */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-  margin-right: 10px; /* Espacio entre textbox y combobox */
+  width: 70%; /* Espacio reservado para el combobox */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover para textbox */
+/* Hover en textbox */
 .input-group input:hover {
-  border-color: #9cadc1; /* Cambio de borde al pasar el mouse */
+  border-color: #9cadc1;
 }
 
 .input-group input:focus {
-  outline: none; /* Quita borde azul predeterminado */
-  border-color: #2980b9; /* Borde azul en foco */
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
 }
 
-/* Combobox (select) */
+/* Combobox dentro del grupo */
 .input-group select {
-  width: 25%; /* Más pequeño para quedar al lado del textbox */
-  padding: 10px; /* Espaciado interno */
-  border: 1px solid #bdc3c7; /* Borde gris */
-  border-radius: 10px; /* Bordes redondeados */
-  font-size: 1rem; /* Tamaño de texto */
-  background-color: #f9f9f9; /* Fondo claro */
-  color: #2c3e50; /* Texto oscuro */
-  cursor: pointer; /* Manito al pasar el mouse */
-  transition: all 0.3s ease; /* Transición para hover */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  width: 25%; /* Combobox más pequeño */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* Hover en combobox */
 .input-group select:hover {
-  background-color: #ecf0f1; /* Fondo ligeramente más claro */
-  border-color: #9cadc1; /* Cambio de color de borde */
+  background-color: #ecf0f1;
+  border-color: #9cadc1;
 }
 
-.input-group select:focus {
-  outline: none; /* Elimina el borde azul predeterminado */
-  border-color: #2980b9; /* Borde azul */
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5); /* Sombra azul */
-}
-
-/* Etiquetas alineadas arriba */
+/* Etiquetas */
 .input-group label {
-  width: 100%; /* Asegura que la etiqueta ocupe todo el espacio del grupo */
-  font-size: 1rem; /* Tamaño consistente */
-  color: #2c3e50; /* Color oscuro */
-  margin-bottom: 5px; /* Espaciado con el campo */
-  text-align: left; /* Alineación a la izquierda */
+  width: 100%;
+  font-size: 1rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
-/* Botón Calcular */
+/* Botón de cálculo */
 .blue-button {
   background-color: #9cadc1;
   color: white;
@@ -198,7 +205,7 @@ label {
   background-color: #2980b9;
 }
 
-/* Botón Regresar */
+/* Botón de regresar */
 .back-button {
   position: absolute;
   top: 10px;
@@ -217,30 +224,20 @@ label {
   background-color: #1a252f;
 }
 
-/* Animación de aparición y crecimiento */
-@keyframes fadeInGrow {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .main-card {
+    flex-direction: column;
+    width: 95%;
+    height: auto; /* Permitir que la altura se ajuste */
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+
+  .left-half {
+    border-right: none;
+    border-bottom: 2px solid #ecf0f1;
   }
-}
 
-textarea {
-  width: 80%;
-  height: 90%; /* Ajustamos la altura para que sea más largo */
-  padding: 10px;
-  border: 1px solid #bdc3c7;
-  border-radius: 5px;
-  font-size: 1rem;
-  background-color: #ecf0f1;
-  color: #2c3e50;
-  resize: none;
-}
-
-textarea[readonly] {
-  background-color: #ecf0f1;
+  textarea {
+    height: 400px;
+  }
 }
