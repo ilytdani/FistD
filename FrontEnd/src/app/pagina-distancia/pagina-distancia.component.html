@@ -1,88 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página de Cálculo</title>
-  <link rel="stylesheet" href="pagina-distancia.component.css">
-</head>
-<body>
-  <div class="container">
-    <div class="main-card">
-      <!-- Botón Regresar -->
-      <button routerLink="/dashboard" class="back-button">Regresar</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Cálculo</title>
+    <link rel="stylesheet" href="pagina-distancia.component.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-card">
+        <!-- Botón Regresar -->
+        <button routerLink="/dashboard" class="back-button">Regresar</button>
 
-      <!-- Parte izquierda -->
-      <div class="left-half">
-        <h2>Cálculo</h2>
+        <div class="content-container">
+          <!-- Parte de formulario -->
+          <div class="form-section">
+            <h2>Cálculo</h2>
 
-        <!-- Combo Box para tipo de cálculo -->
-        <label for="calculation-type">Selecciona el cálculo:</label>
-        <select id="calculation-type" [(ngModel)]="calculationType">
-          <option value="distance">Distancia</option>
-          <option value="speed">Velocidad</option>
-          <option value="time">Tiempo</option>
-        </select>
+            <!-- Combo Box para tipo de cálculo -->
+            <div class="input-group">
+              <label for="calculation-type">Selecciona el cálculo:</label>
+              <select id="calculation-type" [(ngModel)]="calculationType">
+                <option value="distance">Distancia</option>
+                <option value="speed">Velocidad</option>
+                <option value="time">Tiempo</option>
+              </select>
+            </div>
 
-        <!-- Campos de entrada dinámicos -->
-        <div *ngIf="calculationType !== 'time'">
-          <label for="time">Tiempo:</label>
-          <input type="number" id="time" [(ngModel)]="time" placeholder="Ingresa el tiempo">
+            <!-- Campos de entrada dinámicos -->
+            <div *ngIf="calculationType !== 'time'" class="input-group">
+              <label for="time">Tiempo:</label>
+              <input
+                type="number"
+                id="time"
+                [(ngModel)]="time"
+                placeholder="Ingresa el tiempo"
+              />
 
-          <label for="time-unit">Unidad de tiempo:</label>
-          <select id="time-unit" [(ngModel)]="timeUnit">
-            <option value="seconds">Segundos</option>
-            <option value="minutes">Minutos</option>
-            <option value="hours">Horas</option>
-          </select>
+              <label for="time-unit">Unidad de tiempo:</label>
+              <select id="time-unit" [(ngModel)]="timeUnit">
+                <option value="seconds">Segundos</option>
+                <option value="minutes">Minutos</option>
+                <option value="hours">Horas</option>
+              </select>
+            </div>
+
+            <div *ngIf="calculationType === 'speed'" class="input-group">
+              <label for="distance">Distancia:</label>
+              <input
+                type="number"
+                id="distance"
+                [(ngModel)]="distance"
+                placeholder="Ingresa la distancia"
+              />
+
+              <label for="distance-unit">Unidad de distancia:</label>
+              <select id="distance-unit" [(ngModel)]="distanceUnit">
+                <option value="meters">Metros</option>
+                <option value="kilometers">Kilómetros</option>
+                <option value="miles">Millas</option>
+              </select>
+            </div>
+
+            <div *ngIf="calculationType === 'time'" class="input-group">
+              <label for="distance">Distancia:</label>
+              <input
+                type="number"
+                id="distance"
+                [(ngModel)]="distance"
+                placeholder="Ingresa la distancia"
+              />
+
+              <label for="distance-unit">Unidad de distancia:</label>
+              <select id="distance-unit" [(ngModel)]="distanceUnit">
+                <option value="meters">Metros</option>
+                <option value="kilometers">Kilómetros</option>
+                <option value="miles">Millas</option>
+              </select>
+            </div>
+
+            <div *ngIf="calculationType !== 'speed'" class="input-group">
+              <label for="speed">Velocidad:</label>
+              <input
+                type="number"
+                id="speed"
+                [(ngModel)]="speed"
+                placeholder="Ingresa la velocidad"
+              />
+
+              <label for="speed-unit">Unidad de velocidad:</label>
+              <select id="speed-unit" [(ngModel)]="speedUnit">
+                <option value="m/s">Metros/segundo</option>
+                <option value="km/h">Kilómetros/hora</option>
+                <option value="mi/h">Millas/hora</option>
+              </select>
+            </div>
+
+            <!-- Botón para calcular -->
+            <button (click)="performCalculation()" class="blue-button">
+              Calcular
+            </button>
+          </div>
+
+          <!-- Cuadro de resultados -->
+          <div class="result-section">
+            <textarea
+              id="output-box"
+              [class.animate-result]="animateResult"
+              readonly
+              >{{ result }}</textarea
+            >
+          </div>
         </div>
-
-        <div *ngIf="calculationType === 'speed'">
-          <label for="distance">Distancia:</label>
-          <input type="number" id="distance" [(ngModel)]="distance" placeholder="Ingresa la distancia">
-
-          <label for="distance-unit">Unidad de distancia:</label>
-          <select id="distance-unit" [(ngModel)]="distanceUnit">
-            <option value="meters">Metros</option>
-            <option value="kilometers">Kilómetros</option>
-            <option value="miles">Millas</option>
-          </select>
-        </div>
-
-        <div *ngIf="calculationType === 'time'">
-          <label for="distance">Distancia:</label>
-          <input type="number" id="distance" [(ngModel)]="distance" placeholder="Ingresa la distancia">
-
-          <label for="distance-unit">Unidad de distancia:</label>
-          <select id="distance-unit" [(ngModel)]="distanceUnit">
-            <option value="meters">Metros</option>
-            <option value="kilometers">Kilómetros</option>
-            <option value="miles">Millas</option>
-          </select>
-        </div>
-
-        <div *ngIf="calculationType !== 'speed'">
-          <label for="speed">Velocidad:</label>
-          <input type="number" id="speed" [(ngModel)]="speed" placeholder="Ingresa la velocidad">
-
-          <label for="speed-unit">Unidad de velocidad:</label>
-          <select id="speed-unit" [(ngModel)]="speedUnit">
-            <option value="m/s">Metros/segundo</option>
-            <option value="km/h">Kilómetros/hora</option>
-            <option value="mi/h">Millas/hora</option>
-          </select>
-        </div>
-
-        <!-- Botón para calcular -->
-        <button (click)="performCalculation()" class="blue-button">Calcular</button>
-      </div>
-
-      <!-- Parte derecha -->
-      <div class="right-half">
-        <!-- Cuadro de resultados -->
-        <textarea id="output-box" [class.animate-result]="animateResult" readonly>{{ result }}</textarea>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
