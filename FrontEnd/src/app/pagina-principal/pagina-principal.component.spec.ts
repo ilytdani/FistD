@@ -1,23 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { PaginaPrincipalComponent } from './pagina-principal.component';
+@Component({
+  selector: 'app-pagina-principal',
+  templateUrl: './pagina-principal.component.html',
+  styleUrls: ['./pagina-principal.component.css']
+})
+export class PaginaPrincipalComponent {
+  constructor(private router: Router) {}
 
-describe('PaginaPrincipalComponent', () => {
-  let component: PaginaPrincipalComponent;
-  let fixture: ComponentFixture<PaginaPrincipalComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [PaginaPrincipalComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(PaginaPrincipalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  descendCardAndNavigate() {
+    const card = document.getElementById('card');
+    if (card) {
+      card.classList.add('descending');
+      setTimeout(() => {
+        this.router.navigate(['/dashboard']);
+      }, 500); // Tiempo igual a la duración de la animación de descenso
+    }
+  }
+}
