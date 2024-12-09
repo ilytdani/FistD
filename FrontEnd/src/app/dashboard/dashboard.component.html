@@ -1,13 +1,17 @@
-<div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center bg-dark">
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-dark"
+>
   <div class="card custom-border mx-auto bg-light animation-expand">
     <!-- Decoración superior -->
     <div class="position-absolute top-0 start-0 w-100">
       <div class="row m-3">
         <!-- Botón para ir al inicio -->
-        <div class="col text-start">
+        <div class="col-4 text-start">
           <a routerLink="/pagina-principal" class="card-link">
             <div class="card small-card">
-              <div class="card-body d-flex justify-content-center align-items-center p-2">
+              <div
+                class="card-body d-flex justify-content-center align-items-center p-2"
+              >
                 <h6 class="text-white m-0">Inicio</h6>
               </div>
             </div>
@@ -15,60 +19,84 @@
         </div>
 
         <!-- Icono del centro -->
-        <div class="col text-center text-muted">
+        <div class="col-4 text-center text-muted">
           <i class="bi bi-atom"></i>
         </div>
 
         <!-- Icono de la derecha -->
-        <div class="col text-end text-muted">
+        <div class="col-4 text-end text-muted">
           <i class="bi bi-graph-up"></i>
         </div>
       </div>
     </div>
 
     <!-- Sección principal -->
-    <div class="d-flex flex-column justify-content-center align-items-center h-100">
-      <div class="d-flex gap-4 align-items-start">
+    <div
+      class="d-flex flex-column justify-content-center align-items-center h-100"
+    >
+      <div class="d-flex flex-column flex-md-row gap-4 align-items-center">
         <!-- Card 1 -->
-        <a (mouseenter)="showDescription('MRU: Movimiento Rectilíneo Uniforme. El objeto se desplaza con velocidad constante en línea recta.')"
-           (mouseleave)="hideDescription()"
-           (click)="descendAndNavigate('/pagina-distancia')"
-           class="card-link">
+        <a
+          (click)="descendAndNavigate('/pagina-distancia')"
+          class="card-link mb-3 mb-md-0"
+        >
           <div class="card custom-card animation-expand">
-            <div class="card-body d-flex justify-content-center align-items-center">
-              <h5 class="text-center">MRU <br>(Movimiento Rectilíneo Uniforme)</h5>
+            <div
+              class="card-body d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-center fs-6 fs-md-5">
+                MRU <br />(Movimiento Rectilíneo Uniforme)
+              </h5>
             </div>
           </div>
         </a>
 
-        <!-- Card 2 -->
-        <a (mouseenter)="showDescription('MRUA: Movimiento Rectilíneo Uniforme Acelerado. Velocidad cambia uniformemente con el tiempo.')"
-           (mouseleave)="hideDescription()"
-           (click)="descendAndNavigate('/pagina-velocidad')"
-           class="card-link">
+        <!-- Card 2 (del medio) -->
+        <a
+          (click)="descendAndNavigate('/pagina-velocidad')"
+          class="card-link mb-3 mb-md-0"
+        >
           <div class="card custom-card middle-card animation-expand">
-            <div class="card-body d-flex justify-content-center align-items-center">
-              <h5 class="text-center">MRUA <br>(Movimiento Rectilíneo Uniforme Acelerado)</h5>
+            <div
+              class="card-body d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-center fs-6 fs-md-5">
+                MRUA <br />(Movimiento Rectilíneo Uniforme Acelerado)
+              </h5>
             </div>
           </div>
         </a>
 
         <!-- Card 3 -->
-        <a (mouseenter)="showDescription('Próximamente: Nueva funcionalidad en desarrollo.')"
-           (mouseleave)="hideDescription()"
-           (click)="descendAndNavigate('/pagina-tiempo')"
-           class="card-link">
+        <a (click)="descendAndNavigate('/pagina-tiempo')" class="card-link">
           <div class="card custom-card animation-expand">
-            <div class="card-body d-flex justify-content-center align-items-center">
-              <h5 class="text-center">Soon...</h5>
+            <div
+              class="card-body d-flex justify-content-center align-items-center"
+            >
+              <h5 class="text-center fs-6 fs-md-5">Soon...</h5>
             </div>
           </div>
         </a>
       </div>
+    </div>
 
-      <!-- Espacio fijo para descripción -->
-      <div class="description-box">
-        <p *ngIf="currentDescription">{{ currentDescription }}</p>
+    <!-- Decoración inferior -->
+    <div class="position-absolute bottom-0 start-0 w-100">
+      <div class="row m-3">
+        <div class="col-4 text-start text-muted position-relative">
+          <i class="bi bi-lightbulb tooltip-mru"></i>
+          <span class="tooltip-text"
+            >MRU: Movimiento Rectilíneo Uniforme es un tipo de movimiento en el
+            cual un objeto se desplaza en línea recta con una velocidad
+            constante.</span
+          >
+        </div>
+        <div class="col-4 text-center text-muted">
+          <i class="bi bi-flask"></i>
+        </div>
+        <div class="col-4 text-end text-muted">
+          <i class="bi bi-molecule"></i>
+        </div>
       </div>
     </div>
   </div>
