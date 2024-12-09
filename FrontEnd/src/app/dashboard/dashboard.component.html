@@ -37,6 +37,8 @@
       <div class="d-flex flex-column flex-md-row gap-4 align-items-center">
         <!-- Card 1 -->
         <a
+          (mouseenter)="showDescription('MRU: Movimiento Rectilíneo Uniforme. El objeto se desplaza con velocidad constante en línea recta.')"
+          (mouseleave)="hideDescription()"
           (click)="descendAndNavigate('/pagina-distancia')"
           class="card-link mb-3 mb-md-0"
         >
@@ -51,8 +53,10 @@
           </div>
         </a>
 
-        <!-- Card 2 (del medio) -->
+        <!-- Card 2 -->
         <a
+          (mouseenter)="showDescription('MRUA: Movimiento Rectilíneo Uniformemente Acelerado. Velocidad cambia uniformemente con el tiempo.')"
+          (mouseleave)="hideDescription()"
           (click)="descendAndNavigate('/pagina-velocidad')"
           class="card-link mb-3 mb-md-0"
         >
@@ -68,7 +72,12 @@
         </a>
 
         <!-- Card 3 -->
-        <a (click)="descendAndNavigate('/pagina-tiempo')" class="card-link">
+        <a
+          (mouseenter)="showDescription('Próximamente: Nueva funcionalidad en desarrollo.')"
+          (mouseleave)="hideDescription()"
+          (click)="descendAndNavigate('/pagina-tiempo')"
+          class="card-link"
+        >
           <div class="card custom-card animation-expand">
             <div
               class="card-body d-flex justify-content-center align-items-center"
@@ -78,18 +87,18 @@
           </div>
         </a>
       </div>
+
+      <!-- Caja de descripción -->
+      <div class="description-box">
+        <p *ngIf="currentDescription">{{ currentDescription }}</p>
+      </div>
     </div>
 
     <!-- Decoración inferior -->
     <div class="position-absolute bottom-0 start-0 w-100">
       <div class="row m-3">
-        <div class="col-4 text-start text-muted position-relative">
-          <i class="bi bi-lightbulb tooltip-mru"></i>
-          <span class="tooltip-text"
-            >MRU: Movimiento Rectilíneo Uniforme es un tipo de movimiento en el
-            cual un objeto se desplaza en línea recta con una velocidad
-            constante.</span
-          >
+        <div class="col-4 text-start text-muted">
+          <i class="bi bi-lightbulb"></i>
         </div>
         <div class="col-4 text-center text-muted">
           <i class="bi bi-flask"></i>
