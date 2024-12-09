@@ -1,4 +1,4 @@
-/* Animación de ascenso */
+/* Animaciones */
 @keyframes ascend {
   from {
     transform: translateY(50px);
@@ -10,162 +10,274 @@
   }
 }
 
-/* Clase para aplicar la animación de ascenso */
+@keyframes fadeInGrow {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estilos base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #34495e;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-card {
+  background-color: white;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 1200px;
+  min-height: 80vh;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeInGrow 0.5s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content-container {
+  display: flex;
+  height: 100%;
+  gap: 20px;
+  padding-top: 40px;
+}
+
+.form-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.result-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Elementos de formulario */
+.input-group {
+  margin-bottom: 20px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 90%;
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  resize: none;
+  box-sizing: border-box;
+}
+
+textarea[readonly] {
+  background-color: #ecf0f1;
+}
+
+/* Títulos y etiquetas */
+h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+/* Botones */
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #1a252f;
+}
+
+.blue-button {
+  background-color: #4a6079;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+}
+
+.blue-button:hover {
+  background-color: #2980b9;
+}
+
+/* Clases de animación */
 .ascending {
   animation: ascend 0.5s ease-in-out;
 }
 
+.animate-result {
+  animation: fadeIn 1s ease-in-out;
+}
 
-/* Estilos existentes */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #34495e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+/* Media Queries */
+@media (min-width: 769px) {
+  .content-container {
+    flex-direction: row;
   }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+
+  .form-section, .result-section {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+  }
+
+  .main-card {
+    padding: 15px;
+  }
+
+  .form-section {
     width: 100%;
   }
-  
-  .main-card {
-    background-color: white;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    width: 150%; /* Ancho casi completo */
-    height: 99%; /* Alto casi completo */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    position: relative; /* Importante para posicionar el botón Regresar */
-    animation: fadeInGrow 0.5s ease-in-out; /* Añadimos la animación */
+
+  .result-section {
+    width: 100%;
+    margin-top: 20px;
   }
-  
-  .left-half, .right-half {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .left-half {
-    border-right: 2px solid #ecf0f1;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #2c3e50;
-  }
-  
-  input {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
+
   textarea {
-    width: 80%;
-    height: 90%; /* Ajustamos la altura para que sea más largo */
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #ecf0f1;
-    color: #2c3e50;
-    resize: none;
+    height: 200px;
   }
-  
-  textarea[readonly] {
-    background-color: #ecf0f1;
+
+  h2 {
+    font-size: 1.5rem;
+    text-align: center;
   }
-  
+
   .blue-button {
-    background-color: #9cadc1;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 5px;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
   }
-  
-  .blue-button:hover {
-    background-color: #2980b9;
-  }
-  
-  /* Estilos para el botón Regresar */
-  .back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #2c3e50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-button:hover {
-    background-color: #1a252f;
-  }
-  
-  /* Animación de aparición y crecimiento */
-  @keyframes fadeInGrow {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  .animate-result {
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  select {
-    width: 80%;
+}
+
+@media (max-width: 576px) {
+  .container {
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #f9f9f9;
   }
-  
+
+  .main-card {
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  input, select {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  textarea {
+    height: 180px;
+    font-size: 0.9rem;
+  }
+
+  .blue-button {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+
+  .back-button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-card {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  input, select, textarea {
+    font-size: 0.85rem;
+  }
+
+  .blue-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
