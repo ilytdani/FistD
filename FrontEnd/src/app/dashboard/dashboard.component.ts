@@ -7,23 +7,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  currentDescription: string | null = null;
+
   constructor(private router: Router) {}
 
-  descendAndNavigate(route: string) {
-    const cards = document.querySelectorAll('.custom-card'); // Selecciona las tarjetas
-    const container = document.querySelector('.container-fluid'); // Selecciona el contenedor principal
+  showDescription(description: string): void {
+    this.currentDescription = description;
+  }
 
-    // Anima primero los cards
-    cards.forEach((card) => card.classList.add('cards-descending'));
+  hideDescription(): void {
+    this.currentDescription = null;
+  }
 
-    // Espera a que termine la animación de los cards y luego anima el resto del contenedor
-    setTimeout(() => {
-      if (container) {
-        container.classList.add('container-descending');
-        setTimeout(() => {
-          this.router.navigate([route]); // Navega después de la animación del contenedor
-        }, 500); // Tiempo de la animación del contenedor
-      }
-    }, 500); // Tiempo de la animación de los cards
+  descendAndNavigate(route: string): void {
+    const cards = document.querySelectorAll('.custom-card');
+    const container = document.querySelector('.container-fluid');
+
+    if (cards.length > 0) {
+      cards.forEach((card) => card.classList.add('cards-descending'));
+      setTimeout(() => {
+        if (container) {
+          container.classList.add('container-descending');
+          setTimeout(() => {
+            this.router.navigate([route]);
+          }, 500);
+        }
+      }, 500);
+    } else {
+      this.router.navigate([route]);
+    }
   }
 }

@@ -189,3 +189,93 @@ html, body {
   animation: container-descend 0.5s ease-in-out forwards;
 }
 
+
+
+/*Icono del foco con texto flotante*/
+/* Posicionamiento del icono de foco y texto flotante */
+.tooltip-container {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Alineación en la esquina superior derecha */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Icono del foco */
+.tooltip-mru {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #2c3e50; /* Color del foco */
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.tooltip-mru:hover {
+  color: #2980b9; /* Cambio de color al pasar el mouse */
+  transform: scale(1.1); /* Ligera ampliación */
+}
+
+/* Texto flotante */
+.tooltip-text {
+  visibility: hidden; /* Ocultar por defecto */
+  background-color: #333; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+  text-align: center;
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 5px;
+  width: 200px;
+  position: absolute;
+  top: -40px; /* Ajuste para posicionarlo encima */
+  right: 0;
+  z-index: 10;
+  font-size: 0.8rem;
+  opacity: 0; /* Inicialmente invisible */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: visibility 0.2s, opacity 0.2s ease-in-out;
+}
+
+/* Mostrar texto al pasar el mouse */
+.tooltip-mru:hover + .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* Caja de descripción */
+.description-box {
+  min-height: 50px; /* Altura fija para el espacio del texto */
+  margin-top: 20px; /* Espaciado entre las tarjetas y el texto */
+  padding: 10px 20px;
+  background-color: #2c3e50;
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description-box p {
+  margin: 0; /* Quitar el margen por defecto de <p> */
+}
+
+/* Ocultar el texto cuando no hay descripción */
+.description-box:empty {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Animación de aparición de la descripción */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
